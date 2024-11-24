@@ -1,27 +1,66 @@
 # Book Management API
 
-## Authentication
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-- **Login**: `POST /login`  
-  Body: `{ "email": "admin@email.com", "password": "1234@Abcd" }`  
-  Returns: `token`
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## Authors
+## About This Project
 
-- **Create Author**: `POST /authors` (Admin only)  
-  Body: `{ "name": "Author Name", "email": "author@email.com", "password": "password" }`
+This project is a test implementation for library system in Laravel. It demonstrates how to manage books and categories effectively by roles, ensuring secure and structured access to resources within a Laravel application.
 
-## Books
+## Installation Instructions
 
-- **Create Book**: `POST /books` (Author only)  
-  Body: `{ "title": "Book Title", "description": "Book Description", "published_at": "2024-11-01", "bio": "Author Bio", "cover": "file" }`
+Follow these steps to set up and run the project:
 
-- **Update Book**: `PUT /books/{id}` (Author only)
+### Prerequisites
+- PHP 8.1 or later
+- Composer
+- MySQL or any database supported by Laravel
+- Node.js and NPM (optional, if front-end assets need to be compiled)
 
-- **Export Books**: `POST /books/export` (Author only)
+### Step 1: Clone the Repository and Set Up the Environment
+```bash
+git clone 
+cd 
+composer install
+cp .env.example .env
+```
 
-- **Import Books**: `POST /books/import` (Author only)
+Update the `.env` file with your database credentials:
+```env
+DB_DATABASE=library
+```
 
-## Categories
+### Step 2: Create the Database and Run Migrations
+Create a database named library in your database system:
+```sql
+CREATE DATABASE library;
+```
 
-- **Create Category**: `POST /categories` (Admin only)
+Then run the migrations and seeders:
+```bash
+php artisan migrate --seed
+```
+
+### Step 3: Generate the Application Key
+```bash
+php artisan key:generate
+```
+
+### Step 4: Run the Application
+```bash
+php artisan serve
+```
+Visit the application at http://127.0.0.1:8000.
+
+### Testing the Application
+The project includes test import file Real_Books_Import.xlsx and a postman collection file in the database folder for testing.
+
+## License
+This project is open-sourced software licensed under the MIT license.
+```
