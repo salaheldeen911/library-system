@@ -133,8 +133,9 @@ class BookController extends Controller
     {
         try {
             $query = $request->value;
-
-            $books = Book::whereFullText(['title', 'description'], $query)->get();
+            $books = Book::where('title', 'LIKE', "%$query%")
+                ->orWhere('description', 'LIKE', "%$query%")
+                ->get();
 
             return $this->success('Books retrieved successfully', BookResource::collection($books));
         } catch (Exception $e) {

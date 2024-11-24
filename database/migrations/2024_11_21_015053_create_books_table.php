@@ -15,11 +15,9 @@ return new class extends Migration
             $table->date('published_at');
             $table->text('bio');
             $table->string('cover'); // Path to the book cover image
-            $table->foreignId('author_id')->constrained('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreignId('author_id')->nullable()->constrained('users')->nullOnDelete()->cascadeOnUpdate();
 
             $table->timestamps();
-
-            $table->fullText(['title', 'description']);
         });
     }
 
